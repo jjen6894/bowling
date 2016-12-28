@@ -1,0 +1,1 @@
+This is a bowling single player game showing the functionality of a scoreboard using spies of rolling to initially check the score and then to add its functionality in through randomness of pins struck
