@@ -30,4 +30,15 @@ describe("Bowling:", function() {
       expect(bowling.frame()).toEqual(2)
     });
   });
+
+  describe("every score is recorded in the scores", function(){
+    beforeEach(function(){
+      spyOn(roll, 'bowl').and.returnValue(4)
+    });
+    it("expects the first shot to entered into scoreboard", function(){
+      bowling.shots();
+      bowling.shots();
+      expect(bowling.startingScore).toEqual(8)
+    });
+  });
 });

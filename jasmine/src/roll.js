@@ -4,7 +4,7 @@ Roll.prototype.bowl = function() {
   if(this.randomPinsHit() === 10) {
     return "STRIKE"
   } else {
-  return this.randomPinsHit()
+    return this.randomPinsHit()
   }
 };
 Roll.prototype.randomPinsHit = function() {

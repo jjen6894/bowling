@@ -1,7 +1,9 @@
 var Bowling = function () {
+  roll = new Roll();
   this.startingScore = 0;
   this.currentFrame = 1;
   this.shotCount = 0;
+
 };
 
 Bowling.prototype.score = function() {
@@ -15,8 +17,10 @@ Bowling.prototype.frame = function(){
 Bowling.prototype.shots = function(){
   if(this.firstOrSecondShot()) {
     this.shotCount += 1;
+    this.startingScore += roll.bowl();
     return "You have bowled your first shot";
   } else {
+    this.startingScore += roll.bowl();
     this.shotCount -= 1;
     this.currentFrame +=1;
     return "You have bowled your second shot";
