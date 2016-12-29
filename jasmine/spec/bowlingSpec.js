@@ -1,7 +1,7 @@
 describe("Bowling:", function() {
   var bowling;
 
-  beforeEach(function(){
+  beforeEach(function() {
     bowling = new Bowling();
   });
   describe("the game should start with score and frame at 0:", function(){
@@ -12,6 +12,22 @@ describe("Bowling:", function() {
 
     it("should start on frame 1:", function(){
       expect(bowling.frame()).toEqual(1);
+    });
+  });
+
+  describe("once started player should be able to roll twice per frame:", function(){
+
+    it("player rolls first shot", function(){
+      expect(bowling.shots()).toEqual("You have bowled your first shot")
+    });
+    it("player rolls second shot", function(){
+      bowling.shots();
+      expect(bowling.shots()).toEqual("You have bowled your second shot")
+    });
+    it("player has rolled two shots they should move onto the next frame", function(){
+      bowling.shots();
+      bowling.shots();
+      expect(bowling.frame()).toEqual(2)
     });
   });
 });
