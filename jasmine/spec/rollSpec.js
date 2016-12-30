@@ -28,8 +28,21 @@ describe("Roll:", function(){
       spyOn(roll, 'randomPinsHit').and.returnValue(9)
     });
     it('should not exceed a total of ten',function(){
-        expect(roll.bowlTwo()).toBeLessThan(2)
+        expect(roll.randomPinsHitTwo()).toBeLessThan(2)
 
+    });
+  });
+
+  describe("returns a 'SPARE': ",function(){
+
+    beforeEach(function(){
+      spyOn(roll, 'randomPinsHit').and.returnValue(5);
+      spyOn(roll, 'randomPinsHitTwo').and.returnValue(5);
+    })
+
+    it("when total of 10 is hit over two shots",function(){
+      roll.bowlOne()
+      expect(roll.bowlTwo()).toEqual("SPARE")
     });
   });
 
