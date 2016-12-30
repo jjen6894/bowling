@@ -17,13 +17,19 @@ Bowling.prototype.frame = function(){
 Bowling.prototype.shots = function(){
   if(this.firstOrSecondShot()) {
     this.shotCount += 1;
-    this.startingScore += roll.bowl();
-    return "You have bowled your first shot";
+    this.startingScore += roll.bowlOne();
+    if(roll.bowlOne() === "STRIKE"){
+      this.currentFrame += 1;
+      this.shotCount -= 1;
+      return "You hit a STRIKE"
+    }
+    return "You have bowled your first shot " + roll.bowlOne();
+
   } else {
-    this.startingScore += roll.bowl();
+    this.startingScore += roll.bowlTwo();
     this.shotCount -= 1;
     this.currentFrame +=1;
-    return "You have bowled your second shot";
+    return "You have bowled your second shot " + roll.bowlTwo();
   };
 };
 Bowling.prototype.firstOrSecondShot = function() {
@@ -32,4 +38,10 @@ Bowling.prototype.firstOrSecondShot = function() {
   } else {
   return false;
   }
+};
+
+Bowling.prototype.strikeOnFirstShot = function() {
+  if(this.shotCount === 0 && roll.randomPinsHit() === 10){
+    return "STRIKE"
+  };
 };

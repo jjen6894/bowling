@@ -19,7 +19,19 @@ describe("Roll:", function(){
     });
 
     it("should give a strike when a player scores ten on first throw", function(){
-      expect(roll.bowl()).toEqual("STRIKE")
+      expect(roll.bowlOne()).toEqual("STRIKE")
     });
   });
+  describe("second roll and the first cannot exceed the total:",function(){
+
+    beforeEach(function(){
+      spyOn(roll, 'randomPinsHit').and.returnValue(9)
+    });
+    it('should not exceed a total of ten',function(){
+        expect(roll.bowlTwo()).toBeLessThan(2)
+
+    });
+  });
+
+
 });
