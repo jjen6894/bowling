@@ -22,7 +22,7 @@ describe("Roll:", function(){
       expect(roll.bowlOne()).toEqual("STRIKE")
     });
   });
-  describe("second roll and the first cannot exceed the total:",function(){
+  describe("second roll and the first cannot exceed the total:", function(){
 
     beforeEach(function(){
       spyOn(roll, 'randomPinsHit').and.returnValue(9)

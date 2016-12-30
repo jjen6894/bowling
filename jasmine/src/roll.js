@@ -8,16 +8,13 @@ Roll.prototype.bowlOne = function() {
   }
 };
 Roll.prototype.bowlTwo = function() {
-  if(this.randomPinsHitTwo() === 10) {
-    return "SPARE"
-  } else {
-    return this.randomPinsHitTwo()
-  }
+  return this.randomPinsHitTwo()
+
 };
 Roll.prototype.randomPinsHit = function() {
    return Math.floor(Math.random()*10) +1;
 
 };
 Roll.prototype.randomPinsHitTwo = function() {
-  return Math.floor(Math.random()*(10 -randomPinsHit()))+1;
+  return Math.floor(Math.random()*(10 - this.randomPinsHit()))+1;
 };
