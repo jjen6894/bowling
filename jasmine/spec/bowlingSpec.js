@@ -5,10 +5,10 @@ describe("Bowling:", function() {
     bowling = new Bowling();
     roll = new Roll();
   });
-  describe("the game should start with score and frame at 0:", function(){
+  describe("the game should start with frame at 0:", function(){
 
     it("should start with a score of 0:", function(){
-      expect(bowling.score()).toEqual(0);
+      expect(bowling.currentScore).toEqual(0);
     });
 
     it("should start on frame 1:", function(){
@@ -39,12 +39,18 @@ describe("Bowling:", function() {
     beforeEach(function(){
       spyOn(roll, 'bowlOne').and.returnValue(4)
       spyOn(roll, 'bowlTwo').and.returnValue(4)
-
     });
     it("expects the first and second shot to be inputted into scoreboard", function(){
       bowling.shots();
       bowling.shots();
-      expect(bowling.startingScore).toEqual(8)
+      expect(bowling.currentScore).toEqual(8)
+    });
+    it("expect to have a total of 80 after 10 frames", function(){
+      for (i = 0; i < 20; i++){;
+      bowling.shots();
+    }
+      expect(bowling.currentScore).toEqual(80)
+      expect(bowling.computeTotalScore()).toEqual(80)
     });
   });
   describe("only take one shot if ten is scored", function(){
@@ -56,10 +62,14 @@ describe("Bowling:", function() {
       expect(bowling.frame()).toEqual(2);
       expect(bowling.shotCount).toEqual(0);
     });
-    it("should only add the next two shots to score", funciton(){
-      bowling.shots();
-    });
-
   });
+  describe("user can input their own scores if they want", function(){
+    it("should be able to choose what score they got",function(){
+      expect(bowling.choiceOfShot(10)).toContain(10);
 
+    });
+    it("when a spare is scored the next score is added twice.", function(){
+      bowling.choiceOfShot(9)
+    });
+  });
 });
