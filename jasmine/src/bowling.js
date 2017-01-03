@@ -16,20 +16,22 @@ Bowling.prototype.frame = function(){
 
 Bowling.prototype.shots = function(){
   if(this.firstOrSecondShot()) {
+    var firstShot = roll.bowlOne();
     this.shotCount += 1;
-    this.startingScore += roll.bowlOne();
-    if(roll.bowlOne() === "STRIKE"){
+    if(firstShot === "STRIKE"){
       this.currentFrame += 1;
       this.shotCount -= 1;
       return "You hit a STRIKE"
     }
-    return "You have bowled your first shot " + roll.bowlOne();
+    this.startingScore += firstShot;
+    return "You have bowled your first shot " + firstShot
 
   } else {
-    this.startingScore += roll.bowlTwo();
+    var secondShot = roll.bowlTwo();
+    this.startingScore += secondShot;
     this.shotCount -= 1;
     this.currentFrame +=1;
-    return "You have bowled your second shot " + roll.bowlTwo();
+    return "You have bowled your second shot " + secondShot;
   };
 };
 Bowling.prototype.firstOrSecondShot = function() {

@@ -15,9 +15,9 @@ Roll.prototype.bowlTwo = function() {
   }
 };
 Roll.prototype.randomPinsHit = function() {
-   return Math.floor(Math.random()*10) +1;
+   return Math.floor(Math.random()*10) ;
 
 };
 Roll.prototype.randomPinsHitTwo = function() {
-  return Math.floor(Math.random()*(10 - this.randomPinsHit()))+1;
+  return Math.floor(Math.random()*(10 - this.randomPinsHit()));
 };

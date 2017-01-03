@@ -3,6 +3,7 @@ describe("Bowling:", function() {
 
   beforeEach(function() {
     bowling = new Bowling();
+    roll = new Roll();
   });
   describe("the game should start with score and frame at 0:", function(){
 
@@ -52,7 +53,13 @@ describe("Bowling:", function() {
     });
     it("should only have on shot per frame when a strike is scored", function(){
       expect(bowling.shots()).toEqual("You hit a STRIKE")
-      expect(bowling.frame()).toEqual(2)
+      expect(bowling.frame()).toEqual(2);
+      expect(bowling.shotCount).toEqual(0);
     });
+    it("should only add the next two shots to score", funciton(){
+      bowling.shots();
+    });
+
   });
+
 });
