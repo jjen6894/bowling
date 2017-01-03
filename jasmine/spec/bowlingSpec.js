@@ -68,8 +68,22 @@ describe("Bowling:", function() {
       expect(bowling.choiceOfShot(10)).toContain(10);
 
     });
+
     it("when a spare is scored the next score is added twice.", function(){
       bowling.choiceOfShot(9)
+      bowling.choiceOfShot(1)
+      bowling.choiceOfShot(5)
+      expect(bowling.currentScore).toEqual(20)
+    });
+  });
+  describe("SPARE:", function(){
+    beforeEach(function(){
+      spyOn(roll, 'bowlOne').and.returnValue(5)
+      spyOn(roll, 'bowlTwo').and.returnValue(5)
+    });
+    it("should return SPARE when the two shots add up to 10",function(){
+      bowling.shots();
+      expect(bowling.shots()).toEqual("SPARE")
     });
   });
 });
